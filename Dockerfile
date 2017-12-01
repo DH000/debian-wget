@@ -8,7 +8,8 @@ RUN echo "deb-src http://mirrors.aliyun.com/debian/ jessie main non-free contrib
 RUN echo "deb-src http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib" >> /etc/apt/sources.list
 
 # install wget
-RUN apt-get update \
-	&& apt-get install wget -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	ca-certificates \
+	curl \
+	wget \
 	&& rm -rf /var/lib/apt/lists/*
-RUN wget --version
